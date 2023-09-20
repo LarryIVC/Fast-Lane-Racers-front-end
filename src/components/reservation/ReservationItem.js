@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
-// import { deleteBook } from '../redux/books/booksSlice';
 import { SwiperSlide } from 'swiper/react';
 
-function ReservationItem({ reservation }) {
-  // const dispatch = useDispatch();
+function ReservationItem({ reservation, handleDelete }) {
   return (
     <SwiperSlide>
       <div className="d-flex reserve">
@@ -31,9 +28,9 @@ function ReservationItem({ reservation }) {
         </div>
         <div className="d-flex w-100 h-center">
           <button
-            // onClick={() => {
-            //   dispatch(deletereservation(reservation.item_id));
-            // }}
+            onClick={() => {
+              handleDelete(reservation.id);
+            }}
             type="button"
             className="btn-cancel"
           >
@@ -47,6 +44,7 @@ function ReservationItem({ reservation }) {
 
 ReservationItem.propTypes = {
   reservation: PropTypes.instanceOf(Object).isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default ReservationItem;
